@@ -1,0 +1,20 @@
+{
+    "name": "nickolanack/lib-polly",
+    "description": "Speech to text library using AWS polly - needs api keys",
+    "type": "library",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Nick Blackwell",
+            "email": "nickblackwell82@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "aws/aws-sdk-php": "3.*"
+    },
+    "autoload": {
+        "psr-4": { "nickolanack\\": "src/" }
+    },
+    
+}
