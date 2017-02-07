@@ -20,7 +20,7 @@ class Polly{
 	
 		require 'vendor/autoload.php';
 
-		$sdk = new Aws\Sdk($config);
+		$sdk = new \Aws\Sdk($config);
 		$polly=$sdk->createPolly();
 		$this->polly=$polly;
 
