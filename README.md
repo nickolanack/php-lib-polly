@@ -3,7 +3,9 @@ AWS Polly class to help query and cache text to speech
 
 
 Usage
-```
+```php
+
+require __DIR__.'/vendor/autoload.php';
 
 $file = (new nickolanack\Polly(
 			array(
