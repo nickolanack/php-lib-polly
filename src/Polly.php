@@ -38,7 +38,7 @@ class Polly{
 			mkdir($folder);
 		}
 
-		$file=$folder.'/'.str_replace(' ', '-', strtolower($text)).'.mp3';
+		$file=$folder.'/'.md5($text).'.mp3';
 
 		if(file_exists($file)){
 			return $file;
