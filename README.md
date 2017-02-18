@@ -3,6 +3,11 @@ AWS Polly class to help query and cache text to speech
 
 
 Usage
+```
+composer install 
+```
+
+
 ```php
 
 require __DIR__.'/vendor/autoload.php';
