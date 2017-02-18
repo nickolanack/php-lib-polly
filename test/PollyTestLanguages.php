@@ -3,20 +3,25 @@
 class PollyTestLanguages extends PHPUnit_Framework_TestCase
 {
 
+	protected function getCredentials(){
+
+		$credentials=__DIR__.'/credentials.json';
+		if(!file_exists($credentials)){
+			throw new Exception('Put your AWS credentials in: '.$credentials.' ie: {"key":"XXXXXXX", "secret":"XXXXXXXXXXXX"}');
+		}
+		return get_object_vars(json_decode(file_get_contents($credentials)));
+	}
+
+
 	public function testEnglish(){
 
 		require dirname(__DIR__).'/vendor/autoload.php';
-		
-		$credentials=__DIR__.'/credentials.json';
-		if(!file_exists($credentials)){
-			throw new Exception('Put your AWS credentials in: '.$credentials.' ie: {}');
-		}
 
 		$file = (new nickolanack\Polly(
 		            array(
 		                'region'  => 'us-west-2',
 		                'version' => 'latest',
-		                'credentials'=>get_object_vars(json_decode(file_get_contents($credentials)))
+		                'credentials'=>$this->getCredentials()
 		            )
 		        ))->setVoice('Brian')->textToSpeach('Hello World');
 
@@ -31,17 +36,12 @@ class PollyTestLanguages extends PHPUnit_Framework_TestCase
 	public function testRussian(){
 
 		require dirname(__DIR__).'/vendor/autoload.php';
-		
-		$credentials=__DIR__.'/credentials.json';
-		if(!file_exists($credentials)){
-			throw new Exception('Put your AWS credentials in: '.$credentials.' ie: {}');
-		}
 
 		$file = (new nickolanack\Polly(
 		            array(
 		                'region'  => 'us-west-2',
 		                'version' => 'latest',
-		                'credentials'=>get_object_vars(json_decode(file_get_contents($credentials)))
+		                'credentials'=>$this->getCredentials()
 		            )
 		        ))->setVoice('Maxim')->textToSpeach('Привет мир');;
 
