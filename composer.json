@@ -2,7 +2,7 @@
     "name": "nickolanack/lib-polly",
     "description": "Speech to text library using AWS polly - needs api keys",
     "type": "library",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Nick Blackwell",
