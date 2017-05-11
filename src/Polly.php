@@ -7,6 +7,7 @@ class Polly{
 
 	protected $polly;
 	protected $voice='Emma';
+	protected $mp3Path='/tmp';
 
 	protected $validNames=array(
 
@@ -18,7 +19,7 @@ class Polly{
 
 
 	
-		require 'vendor/autoload.php';
+		#require 'vendor/autoload.php';
 
 		$sdk = new \Aws\Sdk($config);
 		$polly=$sdk->createPolly();
@@ -32,8 +33,7 @@ class Polly{
 
 		$text=trim($text);
 		
-		
-		$folder=__DIR__.'/assets/'.strtolower($this->voice);
+		$folder = $this->mp3Path . '/Polly_' .strtolower($this->voice);
 		if(!file_exists($folder)){
 			mkdir($folder);
 		}
@@ -67,6 +67,14 @@ class Polly{
 		$this->voice=$name;
 		return $this;
 	}
+
+	public function setMp3Folder($path) {
+		if ($path) {
+			$this->mp3Path = $path; // Defaults to /tmp
+		}
+		return $this;
+	}
+
 
 }
 
