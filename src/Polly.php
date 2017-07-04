@@ -9,6 +9,8 @@ class Polly{
 	protected $voice='Emma';
 	protected $mp3Path='/tmp';
 
+	protected $textType='text';
+
 	protected $validNames=array(
 
 		'Nicole', 'Enrique', 'Tatyana', 'Carmen', 'Lotte', 'Russell', 'Geraint', 'Mads', 'Penelope', 'Joanna', 'Brian', 'Maxim', 'Ricardo', 'Ruben', 'Giorgio', 'Carla', 'Naja', 'Astrid', 'Maja', 'Ivy', 'Chantal', 'Kimberly', 'Amy', 'Marlene', 'Ewa', 'Conchita', 'Karl', 'Mathieu', 'Miguel', 'Justin', 'Jacek', 'Ines', 'Cristiano', 'Gwyneth', 'Mizuki', 'Celine', 'Jan', 'Liv', 'Joey', 'Filiz', 'Dora', 'Raveena', 'Salli', 'Vitoria', 'Emma', 'Hans', 'Kendra'
@@ -26,6 +28,21 @@ class Polly{
 		$this->polly=$polly;
 
 
+
+		if(key_exists('textType', $config)&&in_array($config['textType'], array('text', 'ssml'))){
+			$this->textType=$config['textType'];
+		}
+
+	}
+
+	public function useSSML(){
+		$this->textType='ssml';
+		return $this;
+	}
+
+	public function useText(){
+		$this->textType='text';
+		return $this;
 	}
 
 	public function textToSpeach($text){
@@ -50,7 +67,7 @@ class Polly{
 		    'OutputFormat' => 'mp3', // REQUIRED
 
 		    'Text' => $text, // REQUIRED
-		    'TextType' => 'text',
+		    'TextType' => $this->textType,
 		    'VoiceId' => $this->voice, // REQUIRED
 
 		));
