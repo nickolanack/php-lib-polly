@@ -140,8 +140,8 @@ class Conversation{
 
 	}
 
-	public function wait($s){
-		sleep($s);
+	public function wait($seconds){
+		sleep($seconds);
 		return $this;
 	}
 
